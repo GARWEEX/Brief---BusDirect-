@@ -5,33 +5,70 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BusDirect</title>
-    <link rel="icon" type="img" href="img/image.jpg">
-    <link rel="stylesheet" href="style.css">
-      <link href="./output.css" rel="stylesheet">
-
+    <link rel="icon" type="image/jpeg" href="img/image.jpg">
+  
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<header>
-    <div class="logo">
-        <h2>logo</h2>
-    </div>
-     <h2 class="direction">Safi->marrakech</h2>
-    <nav>
-        <ul>
-            <div>
-            <li><a href="#">home</a></li>
-            <li><a href="#">Ticket</a></li>
+
+<body class="min-h-screen relative font-sans bg-gray-50">
+
+    <header class="bg-blue-600 text-white w-full flex items-center justify-around py-5">
+        <div class="logo">
+            <h2 class="text-xl font-bold">logo</h2>
+        </div>
+        
+        <h2 class=" text-black px-3 py-1 font-semibold rounded ml-28">Safi->marrakech</h2>
+        
+        <nav>
+            <ul class="flex space-x-4">
+                <li>
+                    <a href="#" class="text-white text-[18px] px-4 capitalize no-underline">home</a>
+                </li>
+                <li>
+                    <a href="#" class="text-white text-[18px] px-4 capitalize no-underline">Ticket</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="py-6">
+        <div class="max-w-md ml-6 p-6 bg-white border border-gray-300 rounded-lg shadow-md">
+            
+            <p class="text-2xl font-semibold text-black mb-3 text-center">first place</p>
+            <div class="grid grid-cols-5 gap-2 mb-6">
+                <div class="bg-red-500 text-white font-semibold py-2 rounded text-center">1</div>
+                <div class="bg-gray-100 text-black font-semibold py-2 rounded text-center">2</div>
+                <div class="bg-gray-100 text-black font-semibold py-2 rounded text-center">3</div>
+                <div class="bg-gray-100 text-black font-semibold py-2 rounded text-center">4</div>
+                <div class="bg-gray-100 text-black font-semibold py-2 rounded text-center">5</div>
+                <div class="bg-gray-100 text-black font-semibold py-2 rounded text-center">6</div>
+                <div class="bg-gray-100 text-black font-semibold py-2 rounded text-center">7</div>
+                <div class="bg-gray-100 text-black font-semibold py-2 rounded text-center">8</div>
+                <div class="bg-gray-100 text-black font-semibold py-2 rounded text-center">9</div>
+                <div class="bg-gray-100 text-black font-semibold py-2 rounded text-center">10</div>
             </div>
-        </ul>
-    </nav>
-   
-</header>
-<body>
-    
-    
 
+            <p class="text-2xl font-semibold text-black mb-3 text-center">seconde place</p>
+            <div class="grid grid-cols-5 gap-2">
+                <div class="bg-gray-100 text-black font-semibold py-2 rounded text-center">1</div>
+                <div class="bg-gray-100 text-black font-semibold py-2 rounded text-center">2</div>
+                <div class="bg-gray-100 text-black font-semibold py-2 rounded text-center">3</div>
+                <div class="bg-gray-100 text-black font-semibold py-2 rounded text-center">4</div>
+                <div class="bg-gray-100 text-black font-semibold py-2 rounded text-center">5</div>
+                <div class="bg-gray-100 text-black font-semibold py-2 rounded text-center">6</div>
+                <div class="bg-gray-100 text-black font-semibold py-2 rounded text-center">7</div>
+                <div class="bg-gray-100 text-black font-semibold py-2 rounded text-center">8</div>
+                <div class="bg-gray-100 text-black font-semibold py-2 rounded text-center">9</div>
+                <div class="bg-gray-100 text-black font-semibold py-2 rounded text-center">10</div>
+            </div>
 
+        </div>
+    </main>
+
+    <footer class="absolute bottom-0 w-full bg-blue-600 text-white text-center py-4 text-[22px]">
+        <h3>&copy; All Right Reserved</h3>
+    </footer>
 
 </body>
-<footer>
-    <h3>&copy; All Right Reserved</h3>
-</footer>
+
+</html>
