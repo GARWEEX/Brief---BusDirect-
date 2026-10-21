@@ -8,6 +8,7 @@
     <link rel="icon" type="image/jpeg" href="img/image.jpg">
   
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="script.js"></script>
 </head>
 
 <body class="min-h-screen relative font-sans bg-gray-50">
@@ -65,12 +66,15 @@
         </div>
        
         </div>
-         <div class="   max-w-96 w-full p-6 bg-white border border-gray-300 rounded-lg shadow-md " >    
+         <div class="   max-w-96 w-full p-6 bg-white border border-gray-300 rounded-lg shadow-md "id="myForm">    
     <p class="text-2xl font-semibold text-black mb-3 text-center">acheter une place</p>
             <div class="scroll-ml-10">
-<form>
+<form id="refrech">
       <input type="text"placeholder="Entrer votre prénom:">
+     
+      
       <select>
+       
         <option>1</option>
         <option>2</option>
         <option>3</option>
@@ -93,17 +97,21 @@
         <option>20</option>
 
       </select>
-      <button class="bg-blue-600 rounded">Reserver mon siege</button>
-      </form>
+     <button class="bg-blue-600 rounded">Submit</button>
+    
 </div>
  <p class="text-2xl font-semibold text-black mb-3 text-center">modifier le nom</p>
  <div class="scroll-ml-10">
-
+    <input type="number"placeholder="Entrer ton siege">
+ <input type="text"placeholder="Entre le nouveux nom">
+ <button class="bg-blue-600 rounded">Submit</button>
  </div>
   <p class="text-2xl font-semibold text-black mb-3 text-center">Supprimer</p>
  <div class="scroll-ml-10">
-
+    <input type="text"placeholder="Entre le nouveux nom">
+<button class="bg-blue-600 rounded">Submit</button>
  </div>
+   </form>
         
     </main>
 
