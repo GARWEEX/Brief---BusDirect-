@@ -10,33 +10,53 @@ const modBtn = document.querySelector("#modBtn");
 
 const delSeat = document.querySelector("#delSeat");
 const delBtn = document.querySelector("#delBtn");
+const totalPrice = document.querySelector("#totalPrice");
 
-function updateSelects() {
-  modSeat.innerHTML = '<option value="">Choisir le siège</option>';
-  delSeat.innerHTML = '<option value="">Choisir votre siège</option>';
+let reservations = JSON.parse(localStorage.getItem("reservations")) || [];
 
-  sieges.forEach(siege => {
-    if (siege.classList.contains("occupe")) {
-      const passager = siege.querySelector(".passager");
-      if (passager) {
-        const nom = passager.textContent.trim();
-        const num = siege.dataset.seat;
+function displayReservations() {
 
-        const option1 = document.createElement("option");
-        option1.value = num;
-        option1.textContent = `Siège ${num} (${nom})`;
-        modSeat.appendChild(option1);
+  for (let i = 0; i < sieges.length; i++) {
+    const num = sieges[i].dataset.seat;
+    sieges[i].classList.remove("occupe");
+    sieges[i].style.backgroundColor = "";
+    sieges[i].style.color = "";
+    sieges[i].textContent = num;
+  }
 
-        const option2 = document.createElement("option");
-        option2.value = num;
-        option2.textContent = `Siège ${num} (${nom})`;
-        delSeat.appendChild(option2);
+  for (let i = 0; i < reservations.length; i++) {
+    for (let j = 0; j < sieges.length; j++) {
+      if (String(sieges[j].dataset.seat) === String(reservations[i].seat)) {
+        sieges[j].classList.add("occupe");
+        sieges[j].style.backgroundColor = "red";
+        sieges[j].style.color = "white";
+        sieges[j].innerHTML = reservations[i].seat + '<br><span class="passager text-xs font-normal">' + reservations[i].name + '</span>';
       }
     }
-  });
+  }
+
+  modSeat.innerHTML = '<option value="">Choisir le siège a modifier</option>';
+  delSeat.innerHTML = '<option value="">Choisir votre siège</option>';
+
+  for (let i = 0; i < reservations.length; i++) {
+    const option1 = document.createElement("option");
+    option1.value = reservations[i].seat;
+    option1.textContent = "Siège " + reservations[i].seat + " (" + reservations[i].name + ")";
+    modSeat.appendChild(option1);
+    const option2 = document.createElement("option");
+    option2.value = reservations[i].seat;
+    option2.textContent = "Siège " + reservations[i].seat + " (" + reservations[i].name + ")";
+    delSeat.appendChild(option2);
+  }
+
+  if (totalPrice !== null) {
+    totalPrice.textContent = reservations.length * 80;
+  }
+  localStorage.setItem("reservations", JSON.stringify(reservations));
 }
 
-buyBtn.addEventListener("click", () => {
+buyBtn.addEventListener("click", function () {
+
   const nom = buyName.value.trim();
   const numSiege = buySeat.value;
 
@@ -45,28 +65,34 @@ buyBtn.addEventListener("click", () => {
     return;
   }
 
-  let siegeChoisi;
-  sieges.forEach(siege => {
-    if (siege.dataset.seat === numSiege) {
-      siegeChoisi = siege;
-    }
-  });
+  if (numSiege === "") {
+    alert("Veuillez choisir un siège !");
+    return;
+  }
+  let seatReserved = false;
 
-  if (!siegeChoisi || siegeChoisi.classList.contains("occupe")) {
+  for (let i = 0; i < reservations.length; i++) {
+    if (String(reservations[i].seat) === String(numSiege)) {
+      seatReserved = true;
+      break;
+    }
+  }
+
+  if (seatReserved) {
     alert("Ce siège est déjà réservé !");
     return;
   }
 
-  siegeChoisi.classList.add("occupe");
-  siegeChoisi.style.backgroundColor = "red";
-  siegeChoisi.style.color = "white";
-  siegeChoisi.innerHTML = `${numSiege}<br><span class="passager text-xs font-normal">${nom}</span>`;
+  reservations.push({ name: nom, seat: numSiege });
+
+  displayReservations();
 
   buyName.value = "";
-  updateSelects();
+  buySeat.value = "";
 });
 
-modBtn.addEventListener("click", () => {
+modBtn.addEventListener("click", function () {
+
   const numSiege = modSeat.value;
   const nouveauNom = modName.value.trim();
 
@@ -80,20 +106,20 @@ modBtn.addEventListener("click", () => {
     return;
   }
 
-  sieges.forEach(siege => {
-    if (siege.dataset.seat === numSiege) {
-      const passager = siege.querySelector(".passager");
-      if (passager) {
-        passager.textContent = nouveauNom;
-      }
+  for (let i = 0; i < reservations.length; i++) {
+    if (String(reservations[i].seat) === String(numSiege)) {
+      reservations[i].name = nouveauNom;
+      break;
     }
-  });
+  }
+
+  displayReservations();
 
   modName.value = "";
-  updateSelects();
 });
 
-delBtn.addEventListener("click", () => {
+delBtn.addEventListener("click", function () {
+
   const numSiege = delSeat.value;
 
   if (numSiege === "") {
@@ -101,14 +127,14 @@ delBtn.addEventListener("click", () => {
     return;
   }
 
-  sieges.forEach(siege => {
-    if (siege.dataset.seat === numSiege) {
-      siege.classList.remove("occupe");
-      siege.style.backgroundColor = "";
-      siege.style.color = "";
-      siege.textContent = numSiege;
+  for (let i = 0; i < reservations.length; i++) {
+    if (String(reservations[i].seat) === String(numSiege)) {
+      reservations.splice(i, 1);
+      break;
     }
-  });
+  }
 
-  updateSelects();
-});   
+  displayReservations();
+});
+
+displayReservations();
