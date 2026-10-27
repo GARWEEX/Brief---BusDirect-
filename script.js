@@ -17,6 +17,8 @@ const totalPrice = document.getElementById("totalPrice");
 let reservations = JSON.parse(localStorage.getItem("reservations")) || [];
 let draggedSeat = "";
 
+
+
 function displayReservations() {
     for (let i = 0; i < sieges.length; i++) {
         let num = sieges[i].dataset.seat;
@@ -93,19 +95,24 @@ function displayReservations() {
     localStorage.setItem("reservations", JSON.stringify(reservations));
 }
 
-buyBtn.addEventListener("click", function () {
+buyBtn.addEventListener("click",function(){
     let nom = buyName.value.trim();
     let numSiege = buySeat.value;
     let seatReserved = false;
-
-    if (nom === "") {
-        alert("Veuillez entrer votre prénom !");
+     if (nom === "") {
+        alert("vous dever entrer un nom")
         return;
     }
-
-    if (numSiege === "") {
-        alert("Veuillez choisir un siège !");
+    for (let i=0;i < reservations.length; i++) {
+        if (reservations[i].name.toLowerCase() === nom.toLowerCase()) {
+        alert("vous aver deja une reservation")
         return;
+    }
+   
+    if (numSiege ==="") {
+    alert("vous dever chisir une siege")
+
+    }
     }
 
     for (let i = 0; i < reservations.length; i++) {
