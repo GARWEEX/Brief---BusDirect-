@@ -12,12 +12,12 @@
 
 <body class="min-h-screen relative font-sans bg-gray-50 pb-20">
 
-    <header class="bg-blue-600 text-white w-full flex items-center justify-around py-5">
+    <header class="bg-blue-600 text-white w-full flex flex-col md:flex-row items-center justify-around py-5">
         <div class="logo">
             <h2 class="text-xl font-bold">BusDirect</h2>
         </div>
         
-        <h2 class="text-white px-3 py-1 font-semibold rounded ml-28 ">Safi &rarr; Marrakech</h2>
+        <h2 class="text-white px-3 py-1 font-semibold rounded text-center ">Safi &rarr; Marrakech</h2>
         
         <nav>
             <ul class="flex space-x-4">
@@ -31,8 +31,8 @@
         </nav>
     </header>
 
-    <main class="py-6 px-6 flex justify-between items-start gap-6">
-        <div class="max-w-md w-full p-6 bg-white border border-gray-300 rounded-lg shadow-md">
+    <main class="py-6 px-6 flex flex-col lg:flex-row justify-between items-start gap-6">
+        <div class="w-full lg:max-w-md p-4 sm:p-6 bg-white border border-gray-300 rounded-lg shadow-md">
          
             <p class="text-2xl font-semibold text-black mb-3 text-center">First Place</p>
             <div class="grid grid-cols-5 gap-2 mb-6">
@@ -76,7 +76,7 @@
 
         </div>
 
-        <div class="mb-6 p-4 bg-blue-50 border border-blue-200 rounded-lg text-center" id="myForm">    
+        <div class="w-full lg:flex-1 min-w-0 mb-6 p-3 sm:p-4 bg-blue-50 border border-blue-200 rounded-lg text-center" id="myForm">    
             <div class="bg-white border border-gray-300 ">
                 <p class="text-sm text-gray-600 font-medium">Prix par ticket: <span class="font-bold text-gray-800">80 DH</span></p>
                 <p class="text-xl font-bold text-blue-600 mt-1">
@@ -85,7 +85,7 @@
             </div>
 
                 <p class="text-2xl font-semibold text-black mb-3 text-center">Acheter une place</p>
-                <div class="flex items-center gap-2 mb-6">
+                <div class="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_auto_auto] gap-2 mb-6">
                     <input type="text" id="buyName" placeholder="Entrer votre prénom:" class="border border-gray-300 p-1 rounded w-full" required>
                     <select id="buySeat" class="border border-gray-300 p-1 rounded">
                         <option value="1">1</option>
@@ -114,7 +114,7 @@
 
                 <p class="text-2xl font-semibold text-black mb-3 text-center">Modifier le nom</p>
 
-<div class="flex items-center gap-2 mb-6">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-2 mb-6">
     <select id="modSeat" class="border border-gray-300 p-1 rounded">
         <option value="">Choisir le siège à modifier</option>
     </select>
@@ -127,7 +127,7 @@
     >
 </div>
 
-<div class="flex items-center gap-2 mb-6">
+<div class="grid grid-cols-1 lg-clos-[minmax(0,1fr)_auto] gap-2 mb-6">
     <select id="newSeat" class="border border-gray-300 p-1 rounded">
         <option value="">Choisir le nouveau siège</option>
     </select>
@@ -137,7 +137,7 @@
     </button>
 </div>
                 <p class="text-2xl font-semibold text-black mb-3 text-center">Supprimer</p>
-                <div class="flex items-center gap-2">
+                <div class="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_auto] gap-2">
                     <select id="delSeat" class="border border-gray-300 p-1 rounded w-full">
                         <option value="">Choisir votre siège</option>
                     </select> 
@@ -146,6 +146,7 @@
             </form>
         </div>
     </main>
+
 
     <footer class="absolute bottom-0 w-full bg-blue-600 text-white text-center py-4 text-[22px]">
         <h3>&copy; All Rights Reserved</h3>
